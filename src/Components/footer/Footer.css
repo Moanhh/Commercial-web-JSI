@@ -1,0 +1,26 @@
+.footer{
+    padding-top: 60px;
+    padding-bottom:30px;
+    background-color:var(--primary-color);
+}
+
+.Row {
+    justify-content:space-between;
+}
+
+.footer_link ul li {
+    background: transparent !important;
+
+}
+
+.footer_link ul li a {
+    color: #FEFCF3;
+}
+
+.quick_link-title {
+    margin-bottom: 20px;
+    color: #FEFCF3;
+    font-size:1.1rem;
+}
+
+
