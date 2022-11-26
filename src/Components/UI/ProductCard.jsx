@@ -3,14 +3,33 @@ import React from 'react'
 //import productImg from '../../assets/images/arm-chair-01.jpg';
 import '../../styles/product-card.css';
 
-
+import {  toast } from 'react-toastify';
 
 import { Col } from 'reactstrap';
 import {motion} from 'framer-motion';
 import {Link} from 'react-router-dom';
 
+import {useDispatch} from 'react-redux';
+import { cartAction } from '../../redux/slices/cartSlice';
+
 
 function ProductCard({item}) {
+
+    const dispatch = useDispatch();
+    
+    const addToCart = () => {
+        dispatch(
+            cartAction.addItem({
+                id: item.id,
+                productName: item.productName,
+                price: item.price,
+                image: item.imgUrl,
+            })
+        );
+        
+        toast.success('Product added successfully')
+    }
+
     return (
         <Col lg='3' md='4' className="mb-2">
             <div className="product_item">
@@ -31,7 +50,7 @@ function ProductCard({item}) {
                     <span className="price">
                         ${item.price}
                     </span>
-                    <motion.span whileTap={{scale: 1.2}}>
+                    <motion.span whileTap={{scale: 1.2}} onClick = {addToCart}>
                         <i class="ri-add-line"></i>
                     </motion.span>
                 </div>

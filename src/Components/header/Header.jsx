@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import {Container, Row} from 'reactstrap';
+import {useSelector} from 'react-redux'
 
 import {motion} from 'framer-motion'
 import {NavLink} from 'react-router-dom';
@@ -10,6 +11,9 @@ import userIcon from '../../assets/images/user-icon.png';
 
 
 function Header() {
+
+  
+  const totalQuantity = useSelector(state => state.cart.totalQuantity)
 
   const nav_links =[
     {
@@ -53,12 +57,12 @@ function Header() {
             </div>
           <div className="nav_icons">
           <span className="cart_icon">
-              <i class="ri-heart-line"></i>
-              <span className="badge">1</span>
+              <i class="ri-shopping-bag-2-line"></i>
+              <span className="badge">{totalQuantity}</span>
             </span>
             <span className="fav_icon">
               <i class="ri-heart-line"></i>
-              <span className="badge">1</span>
+              <span className="badge">{}</span>
             </span>
             <span>
               <motion.img whileTap={{scale:1.2}} src={userIcon} alt="" />
